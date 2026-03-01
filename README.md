@@ -265,7 +265,7 @@ Dependencies defined in `requirements.txt`:
 
 ```bash
 # 1. Clone and enter
-git clone <repo-url>
+git clone https://github.com/pypi-ahmad/Fashion-Class-Classification.git
 cd Fashion-Class-Classification
 
 # 2. Virtual environment
