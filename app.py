@@ -15,7 +15,7 @@ import streamlit as st
 import torch
 import torch.nn as nn
 from torchvision import models, transforms, datasets
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
@@ -31,6 +31,14 @@ import pandas as pd
 # --- Configuration & Setup ---
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 BUNDLE_PATH = 'fashion_bundle.pth'
+BUNDLE_LOAD_ERROR = None
+
+IMAGE_TRANSFORM = transforms.Compose([
+    transforms.Resize((32, 32)),
+    transforms.Grayscale(num_output_channels=3),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+])
 
 st.set_page_config(page_title="Fashion Neural Lab", layout="wide", page_icon="🔬")
 
@@ -80,13 +88,7 @@ def load_data():
     """
     # Ensure data directory exists
     os.makedirs('./data', exist_ok=True)
-    test_data = datasets.FashionMNIST(root='./data', train=False, download=True, 
-                                    transform=transforms.Compose([
-                                        transforms.Resize((32, 32)),
-                                        transforms.Grayscale(num_output_channels=3),
-                                        transforms.ToTensor(),
-                                        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-                                    ]))
+    test_data = datasets.FashionMNIST(root='./data', train=False, download=True, transform=IMAGE_TRANSFORM)
     return test_data
 
 @st.cache_resource
@@ -95,9 +97,17 @@ def load_bundle():
     Load the trained models and metadata from disk.
     Returns None if file is missing.
     """
+    global BUNDLE_LOAD_ERROR
+    BUNDLE_LOAD_ERROR = None
+
     if not os.path.exists(BUNDLE_PATH):
+        BUNDLE_LOAD_ERROR = f"File not found: {BUNDLE_PATH}"
         return None
-    return torch.load(BUNDLE_PATH, map_location=DEVICE)
+    try:
+        return torch.load(BUNDLE_PATH, map_location=DEVICE, weights_only=True)
+    except Exception as exc:
+        BUNDLE_LOAD_ERROR = str(exc)
+        return None
 
 def get_model_architecture(model_name):
     """
@@ -112,6 +122,8 @@ def get_model_architecture(model_name):
         model.classifier[1] = nn.Linear(model.classifier[1].in_features, 10)
     elif model_name == 'SimpleCNN':
         model = SimpleCNN()
+    else:
+        raise ValueError(f"Unsupported model architecture: {model_name}")
     return model
 
 @st.cache_resource
@@ -126,6 +138,8 @@ def load_active_models(selected_models, _bundle_models):
     """
     loaded_models = {}
     for name in selected_models:
+        if name not in _bundle_models:
+            raise KeyError(f"Model '{name}' not found in bundle.")
         state_dict = _bundle_models[name]
         model = get_model_architecture(name)
         model.load_state_dict(state_dict)
@@ -139,13 +153,7 @@ def preprocess_image(image):
     Preprocess a PIL image for the model:
     Resize(32) -> Grayscale(3) -> Tensor -> Normalize -> Batch Dim.
     """
-    transform = transforms.Compose([
-        transforms.Resize((32, 32)),
-        transforms.Grayscale(num_output_channels=3),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
-    return transform(image).unsqueeze(0).to(DEVICE)
+    return IMAGE_TRANSFORM(image).unsqueeze(0).to(DEVICE)
 
 def get_gradcam(model, model_name, input_tensor, target_class_idx):
     """
@@ -161,6 +169,8 @@ def get_gradcam(model, model_name, input_tensor, target_class_idx):
         target_layers = [model.features[-1]]
     elif model_name == 'SimpleCNN':
         target_layers = [model.features[-1]]
+    else:
+        raise ValueError(f"Unsupported model for Grad-CAM: {model_name}")
     
     cam = GradCAM(model=model, target_layers=target_layers)
     targets = [ClassifierOutputTarget(target_class_idx)]
@@ -175,7 +185,10 @@ st.title("🔬 Fashion Neural Lab: Architecture Comparison")
 # Load Bundle
 bundle = load_bundle()
 if bundle is None:
-    st.error(f"Could not find '{BUNDLE_PATH}'. Please run 'train.py' first.")
+    if BUNDLE_LOAD_ERROR:
+        st.error(f"Could not load '{BUNDLE_PATH}': {BUNDLE_LOAD_ERROR}")
+    else:
+        st.error(f"Could not find '{BUNDLE_PATH}'. Please run 'train.py' first.")
     st.stop()
 
 # Load Data
@@ -225,8 +238,17 @@ if input_mode == "Random Test Sample":
 elif input_mode == "Upload Image":
     uploaded_file = st.sidebar.file_uploader("Upload an image (jpg, png)", type=["jpg", "png", "jpeg"])
     if uploaded_file is not None:
-        input_image = Image.open(uploaded_file).convert('RGB')
-        ground_truth_label = "Unknown"
+        MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 MB
+        if uploaded_file.size is not None and uploaded_file.size > MAX_UPLOAD_BYTES:
+            st.sidebar.error(f"File too large ({uploaded_file.size / 1024 / 1024:.1f} MB). Max allowed: 10 MB.")
+            input_image = None
+        else:
+            try:
+                input_image = Image.open(uploaded_file).convert('RGB')
+                ground_truth_label = "Unknown"
+            except (UnidentifiedImageError, OSError) as exc:
+                st.sidebar.error(f"Invalid image file: {exc}")
+                input_image = None
 
 # --- Main Tabs ---
 tab1, tab2, tab3, tab4 = st.tabs(["🩺 Diagnosis & Consensus", "🧠 Explainability", "📊 Performance", "🌌 Latent Space"])

@@ -17,16 +17,24 @@ import torch.optim as optim
 from torchvision import datasets, transforms, models
 from torch.utils.data import DataLoader
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
-import numpy as np
-import copy
 from tqdm import tqdm
 import os
+import random
 
 # --- Configuration ---
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 EPOCHS = 5
 BATCH_SIZE = 64
-CLASSES = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
+SEED = 42
+
+def set_seed(seed=SEED):
+    random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    if hasattr(torch.backends, 'cudnn'):
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
 
 # --- 1. Data Setup ---
 def get_dataloaders():
@@ -137,14 +145,24 @@ def train_model(model, train_loader, epochs=EPOCHS):
         running_loss = 0.0
         pbar = tqdm(train_loader, desc=f"Epoch {epoch+1}/{epochs}")
         for images, labels in pbar:
-            images, labels = images.to(DEVICE), labels.to(DEVICE)
-            
+            try:
+                images, labels = images.to(DEVICE), labels.to(DEVICE)
+            except (TypeError, AttributeError) as exc:
+                raise ValueError("Invalid batch data format encountered in DataLoader.") from exc
+
+            if images.ndim != 4:
+                raise ValueError(f"Expected image batch rank 4 [N,C,H,W], got rank {images.ndim}.")
+            if labels.ndim != 1:
+                raise ValueError(f"Expected label batch rank 1 [N], got rank {labels.ndim}.")
+            if images.size(0) != labels.size(0):
+                raise ValueError("Batch size mismatch between images and labels.")
+
             optimizer.zero_grad()
             outputs = model(images)
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
-            
+
             running_loss += loss.item()
             pbar.set_postfix({'loss': running_loss / (pbar.n + 1)})
             
@@ -154,6 +172,7 @@ def evaluate_model(model, test_loader):
     """
     Evaluates model performance on the test set.
     """
+    model = model.to(DEVICE)
     model.eval()
     all_preds = []
     all_labels = []
@@ -181,6 +200,11 @@ def get_embeddings(model, loader, model_name):
     For Backbones (ResNet, EffNet), we use Forward Hooks to intercept
     the output of the Global Average Pooling layer.
     """
+    supported_models = {'ResNet18', 'EfficientNet-B0', 'SimpleCNN'}
+    if model_name not in supported_models:
+        raise ValueError(f"Unsupported model for embedding extraction: {model_name}")
+
+    model = model.to(DEVICE)
     model.eval()
     embeddings = []
     labels_list = []
@@ -232,7 +256,8 @@ def get_embeddings(model, loader, model_name):
 # --- Main Execution ---
 if __name__ == "__main__":
     print(f"Using device: {DEVICE}")
-    train_loader, test_loader, test_data = get_dataloaders()
+    set_seed()
+    train_loader, test_loader, _ = get_dataloaders()
     models_collection = get_models()
     
     # The Bundle stores everything the App needs
