@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Security fixes are applied to the default branch and recent actively maintained updates.
+Security fixes are applied to the default branch and recent maintained updates.
 
 ## Reporting a Vulnerability
 
@@ -20,5 +20,4 @@ additional details privately through GitHub as needed.
 
 ## Response Process
 
-Maintainers will triage reports, assess severity, and communicate remediation status
-through issue updates and release/change notes when fixes are available.
+Maintainers will triage reports, assess severity, and post remediation updates in issues and release or change notes when fixes are available.

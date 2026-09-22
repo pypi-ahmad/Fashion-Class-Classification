@@ -2,17 +2,17 @@
 
 ## Our Pledge
 
-We are committed to making participation in this project a harassment-free experience for everyone.
+Everyone should be able to participate in this project without harassment.
 
 ## Our Standards
 
-Examples of behavior that contributes to a positive environment:
+Examples of helpful behavior include:
 
 - Being respectful and constructive
 - Giving and accepting feedback gracefully
 - Focusing on what is best for the community
 
-Examples of unacceptable behavior:
+Unacceptable behavior includes:
 
 - Harassment, discrimination, or personal attacks
 - Trolling, insulting, or derogatory comments
@@ -20,7 +20,7 @@ Examples of unacceptable behavior:
 
 ## Enforcement Responsibilities
 
-Project maintainers are responsible for clarifying and enforcing acceptable behavior.
+Project maintainers clarify and enforce these standards.
 
 ## Scope
 

@@ -3,7 +3,7 @@
 Date: 2026-03-01
 Project: Fashion-Class-Classification
 
-## 1. System Overview
+## 1. System overview
 
 - Training entrypoint: `train.py` ([train.py](train.py#L1), [main block](train.py#L259-L294))
 - App entrypoint: `app.py` ([app.py](app.py#L1), [bundle load path](app.py#L184-L192))
@@ -21,9 +21,9 @@ Project: Fashion-Class-Classification
   - `preprocess_image` ([app.py](app.py#L151))
   - `get_gradcam` ([app.py](app.py#L158))
 
-## 2. Issues Found
+## 2. Issues found
 
-Evidence is based on audit + stress behavior against current code and resolved by explicit guards now present.
+The findings below came from an audit and stress checks against the current code. The listed guards address them.
 
 - Bundle loading robustness issue (missing/corrupt bundle path) → handled via `BUNDLE_LOAD_ERROR` and guarded load ([app.py](app.py#L95-L110), [app.py](app.py#L188-L191)).
 - Unsupported model names previously led to implicit runtime failures → now explicit `ValueError` in architecture and Grad-CAM paths ([app.py](app.py#L126), [app.py](app.py#L173)).
@@ -34,7 +34,7 @@ Evidence is based on audit + stress behavior against current code and resolved b
 - Unknown embedding model now explicitly rejected ([train.py](train.py#L205-L207)).
 - Reproducibility seed path added and invoked ([train.py](train.py#L30-L37), [train.py](train.py#L261)).
 
-## 3. Tests Created
+## 3. Tests created
 
 Test suite under `tests/` contains **24 test functions** (`^def test_` search result).
 
@@ -51,9 +51,9 @@ Representative edge/robustness tests:
 - Unsupported model errors ([tests/test_app_unit.py](tests/test_app_unit.py#L51-L54), [tests/test_app_unit.py](tests/test_app_unit.py#L95-L102), [tests/test_train_unit.py](tests/test_train_unit.py#L94-L101))
 - Invalid training batch schema ([tests/test_train_unit.py](tests/test_train_unit.py#L105-L112))
 
-## 4. Stress Results
+## 4. Stress results
 
-Final validation loop evidence:
+The final validation loop produced these results:
 
 - Full test run: `python -m pytest -q` → `24 passed`.
 - Focused stress validation script summary: `SUMMARY: 5/5 passed`.
@@ -63,9 +63,9 @@ Final validation loop evidence:
   - `DATA.invalid_schema_controlled_error`: PASS
   - `SYSTEM.invalid_upload_rejected`: PASS
 
-No unhandled crash was observed in the final loop.
+The final loop produced no unhandled crash.
 
-## 5. Fixes Applied
+## 5. Fixes applied
 
 Primary fix locations:
 
@@ -76,7 +76,7 @@ Primary fix locations:
 - README corrected to match actual workflow/code:
   - [README.md](README.md)
 
-## 6. Cleanup Done
+## 6. Cleanup
 
 - Removed unused/generated artifacts from workspace root during cleanup cycle:
   - `data.zip`
@@ -85,9 +85,9 @@ Primary fix locations:
 - Updated ignore rules to prevent reintroduction:
   - [.gitignore](.gitignore#L2-L6)
 
-Current top-level workspace listing contains only active project assets and directories.
+The top-level workspace contains the active project assets and directories.
 
-## 7. Final Stability
+## 7. Final stability
 
 Status: **STABLE** (scoped to the tested environment: Python 3.13, CPU-only, Windows)
 

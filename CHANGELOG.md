@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+This file records notable changes to the project.
 
 This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and aims to follow [Semantic Versioning](https://semver.org/).

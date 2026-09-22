@@ -4,11 +4,11 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
 
-A comparative deep learning laboratory that trains three neural network architectures on [FashionMNIST](https://github.com/zalandoresearch/fashion-mnist), evaluates their performance, and serves an interactive Streamlit dashboard for side-by-side model analysis including Grad-CAM explainability, performance benchmarking, and latent-space visualization.
+A comparative deep learning project that trains three neural network architectures on [FashionMNIST](https://github.com/zalandoresearch/fashion-mnist), evaluates them, and serves a Streamlit dashboard for comparing models with Grad-CAM visualizations, performance metrics, and latent-space plots.
 
 ---
 
-## Table of Contents
+## Contents
 
 1. [Project Overview](#1-project-overview)
 2. [Architecture Overview](#2-architecture-overview)
@@ -35,13 +35,13 @@ Fashion Neural Lab trains and compares three architectures on the 10-class Fashi
 | **EfficientNet-B0** | `torchvision.models.efficientnet_b0` (ImageNet-pretrained) | `classifier[1]` → `Linear(1280, 10)` |
 | **SimpleCNN** | Custom 3-layer CNN defined in-project | `Linear(1024, 10)` |
 
-**Key capabilities** (all traceable to code):
+The dashboard provides these features:
 
-- **Multi-model consensus** — Feed a single image to all selected models, aggregate their votes, and display per-model confidence.
-- **Grad-CAM explainability** — Visualize which spatial regions each architecture attends to when classifying.
-- **Performance radar charts** — Compare Accuracy, Precision, Recall, and F1 across models on a polar plot.
-- **Interactive confusion matrices** — Computed on-the-fly from stored embeddings and classifier heads.
-- **Latent-space PCA** — Project the 10 000-image test-set embeddings into 2D via PCA and color by class.
+- **Multi-model consensus**: Feed one image to the selected models, combine their votes, and show each model's confidence.
+- **Grad-CAM**: Show the image regions each architecture uses for its prediction.
+- **Performance radar charts**: Compare accuracy, precision, recall, and F1 across models.
+- **Interactive confusion matrices**: Compute matrices from the stored embeddings and classifier heads.
+- **Latent-space PCA**: Project the 10,000 test-set embeddings into two dimensions and color the points by class.
 
 **FashionMNIST classes:**
 
@@ -312,15 +312,15 @@ streamlit run app.py
 
 The browser opens at `http://localhost:8501` with:
 
-- **Sidebar** — model selector (multi-select, all enabled by default) and input source toggle.
-- **Tab 1: Diagnosis & Consensus** — displays input image, ground truth (if known), per-model predictions and confidence, and majority vote.
-- **Tab 2: Explainability** — side-by-side Grad-CAM heatmaps overlaid on the input image, one per selected model.
-- **Tab 3: Performance** — Plotly radar chart comparing the 4 metrics, plus a selectable per-model confusion matrix.
-- **Tab 4: Latent Space** — button-triggered PCA projection of the primary model's 10 000 test-set embeddings, colored by class.
+- **Sidebar**: model selector, with all models enabled by default, and input source toggle.
+- **Tab 1: Diagnosis & Consensus**: input image, ground truth when known, per-model predictions and confidence, and majority vote.
+- **Tab 2: Explainability**: Grad-CAM heatmaps overlaid on the input image for each selected model.
+- **Tab 3: Performance**: Plotly radar chart for the four metrics and a selectable confusion matrix for each model.
+- **Tab 4: Latent Space**: PCA projection of the primary model's 10,000 test-set embeddings, colored by class.
 
 Input options:
-- **Random Test Sample** — draws from FashionMNIST test set; shuffle button re-randomizes.
-- **Upload Image** — accepts `.jpg`, `.png`, `.jpeg` up to 10 MB.
+- **Random Test Sample**: draws from the FashionMNIST test set; the shuffle button selects another sample.
+- **Upload Image**: accepts `.jpg`, `.png`, and `.jpeg` files up to 10 MB.
 
 ---
 
@@ -347,25 +347,25 @@ The test suite contains **24 tests** across 3 files:
 
 ## 11. Limitations
 
-- **No authentication** — the Streamlit dashboard has no access control. It is intended for local use.
-- **No data augmentation** — the training pipeline applies only resize + grayscale expansion + normalization; no augmentation (flip, rotation, crop) is used.
-- **Fixed hyperparameters** — learning rate (0.001), optimizer (Adam), epochs (5), and batch size (64) are hardcoded constants with no CLI or config override.
-- **32×32 input resolution** — all models operate on 32×32 images, which is below the native resolution expected by ResNet18 (224×224) and EfficientNet-B0 (224×224). This reduces their potential accuracy.
-- **Single-device training** — no distributed training or multi-GPU support.
-- **Confusion matrix computed from embeddings** — Tab 3 re-runs only the classifier head on stored embeddings rather than performing full forward passes, which is accurate only if the embedding extraction preserved the correct representations.
-- **No Streamlit UI tests** — the test suite covers helper functions and training logic but does not test the Streamlit rendering paths.
+- **No authentication**: the Streamlit dashboard has no access control and is intended for local use.
+- **No data augmentation**: the training pipeline only resizes, expands grayscale images, and normalizes them. It does not flip, rotate, or crop images.
+- **Fixed hyperparameters**: the learning rate (0.001), optimizer (Adam), epoch count (5), and batch size (64) are hardcoded with no CLI or config override.
+- **32×32 input resolution**: all models use 32×32 images, below the 224×224 input size expected by ResNet18 and EfficientNet-B0. This may reduce their accuracy.
+- **Single-device training**: the project does not support distributed training or multiple GPUs.
+- **Confusion matrix from embeddings**: Tab 3 runs the classifier head on stored embeddings instead of performing full forward passes. The result is accurate only when embedding extraction preserved the required representations.
+- **No Streamlit UI tests**: the test suite covers helper functions and training logic, not the Streamlit rendering paths.
 
 ---
 
 ## 12. Future Improvements
 
-These are grounded observations based on the current codebase, not speculative features.
+These suggestions follow from the current codebase.
 
-- **Configurable hyperparameters** — expose epochs, learning rate, batch size, and seed via CLI arguments or a config file.
-- **Data augmentation** — add random horizontal flip, random crop, or color jitter to the training transform to improve generalization.
-- **Higher input resolution** — train at 224×224 to leverage the full capacity of the pretrained ResNet and EfficientNet backbones.
-- **Additional architectures** — the model registry pattern (`get_models()` / `get_model_architecture()`) supports straightforward addition of new models.
-- **Streamlit UI tests** — add end-to-end browser tests (e.g., via Playwright or Streamlit's `AppTest`) to cover the rendering and interaction paths.
+- **Configurable hyperparameters**: expose epochs, learning rate, batch size, and seed through CLI arguments or a config file.
+- **Data augmentation**: add random horizontal flips, random crops, or color jitter to the training transform.
+- **Higher input resolution**: train at 224×224 to use the pretrained ResNet and EfficientNet backbones at their expected input size.
+- **Additional architectures**: use the existing model registry pattern to add more models.
+- **Streamlit UI tests**: add end-to-end browser tests, such as Playwright or Streamlit's `AppTest`, for rendering and interaction paths.
 
 ---
 
