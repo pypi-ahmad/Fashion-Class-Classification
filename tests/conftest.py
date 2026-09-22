@@ -7,14 +7,24 @@ import torch
 import torch.nn as nn
 from PIL import Image
 from torch.utils.data import Dataset
-from torchvision import datasets, models, transforms
+from torchvision import datasets
+
+from model_registry import (
+    MODEL_CONFIGS,
+    build_model,
+    build_transform,
+    get_classifier_layer,
+    get_gradcam_layer,
+)
 
 
 class FakeStreamlit:
     def cache_resource(self, func=None):
         if func is None:
+
             def decorator(inner):
                 return inner
+
             return decorator
         return func
 
@@ -46,10 +56,10 @@ class FakeFashionMNIST(Dataset):
     def __len__(self):
         return self.length
 
-    def __getitem__(self, idx):
-        img_array = np.full((28, 28), idx % 255, dtype=np.uint8)
+    def __getitem__(self, index):
+        img_array = np.full((28, 28), index % 255, dtype=np.uint8)
         image = Image.fromarray(img_array, mode="L")
-        label = idx % 10
+        label = index % 10
         if self.transform is not None:
             image = self.transform(image)
         return image, label
@@ -98,7 +108,6 @@ def app_symbols():
     tree = ast.parse(source)
 
     keep_names = {
-        "SimpleCNN",
         "load_data",
         "load_bundle",
         "get_model_architecture",
@@ -106,7 +115,7 @@ def app_symbols():
         "preprocess_image",
         "get_gradcam",
     }
-    selected_nodes = []
+    selected_nodes: list[ast.stmt] = []
     for node in tree.body:
         if isinstance(node, (ast.ClassDef, ast.FunctionDef)) and node.name in keep_names:
             selected_nodes.append(node)
@@ -116,21 +125,17 @@ def app_symbols():
     namespace = {
         "st": FakeStreamlit(),
         "torch": torch,
-        "nn": nn,
-        "models": models,
-        "transforms": transforms,
         "datasets": datasets,
         "Image": Image,
         "np": np,
         "os": __import__("os"),
         "DEVICE": torch.device("cpu"),
         "BUNDLE_PATH": "fashion_bundle.pth",
-        "IMAGE_TRANSFORM": transforms.Compose([
-            transforms.Resize((32, 32)),
-            transforms.Grayscale(num_output_channels=3),
-            transforms.ToTensor(),
-            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-        ]),
+        "MODEL_CONFIGS": MODEL_CONFIGS,
+        "build_model": build_model,
+        "build_transform": build_transform,
+        "get_classifier_layer": get_classifier_layer,
+        "get_gradcam_layer": get_gradcam_layer,
         "GradCAM": DummyGradCAM,
         "ClassifierOutputTarget": DummyClassifierOutputTarget,
     }
