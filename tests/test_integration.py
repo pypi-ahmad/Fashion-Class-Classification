@@ -3,20 +3,21 @@ import torch
 from PIL import Image
 
 import train
-from tests.conftest import FakeFashionMNIST, TinyEffNet, TinyResNet
+from model_registry import MODEL_NAMES
+from tests.conftest import FakeFashionMNIST, TinyResNet
 
 
 def test_training_pipeline_integration(monkeypatch, tmp_path):
     monkeypatch.chdir(tmp_path)
     monkeypatch.setattr(train, "DEVICE", torch.device("cpu"))
     monkeypatch.setattr(train.datasets, "FashionMNIST", FakeFashionMNIST)
-    monkeypatch.setattr(train.models, "resnet18", lambda weights=None: TinyResNet())
-    monkeypatch.setattr(train.models, "efficientnet_b0", lambda weights=None: TinyEffNet())
+    monkeypatch.setattr(train, "build_model", lambda _name, *, pretrained: TinyResNet())
+    monkeypatch.setattr(train, "get_classifier_layer", lambda model, _name: model.fc)
 
     train_loader, test_loader, _ = train.get_dataloaders()
     model_zoo = train.get_models()
 
-    assert set(model_zoo.keys()) == {"ResNet18", "EfficientNet-B0", "SimpleCNN"}
+    assert tuple(model_zoo) == MODEL_NAMES
 
     for model_name, model in model_zoo.items():
         trained = train.train_model(model, train_loader, epochs=1)
@@ -38,7 +39,7 @@ def test_inference_pipeline_integration(app_symbols):
     active_models = load_active_models(["SimpleCNN"], {"SimpleCNN": seed_model.state_dict()})
 
     image = Image.fromarray(np.random.randint(0, 255, size=(64, 64, 3), dtype=np.uint8), mode="RGB")
-    input_tensor = preprocess_image(image)
+    input_tensor = preprocess_image(image, "SimpleCNN")
 
     outputs = active_models["SimpleCNN"](input_tensor)
     probs = torch.nn.functional.softmax(outputs, dim=1)
@@ -61,11 +62,11 @@ def test_inference_pipeline_resnet18(app_symbols):
     active_models = load_active_models(["ResNet18"], {"ResNet18": seed_model.state_dict()})
 
     image = Image.fromarray(np.random.randint(0, 255, size=(64, 64, 3), dtype=np.uint8), mode="RGB")
-    input_tensor = preprocess_image(image)
+    input_tensor = preprocess_image(image, "ResNet18", {"ResNet18": {"input_size": 32}})
 
     outputs = active_models["ResNet18"](input_tensor)
     probs = torch.nn.functional.softmax(outputs, dim=1)
-    confidence, pred_idx = torch.max(probs, 1)
+    _confidence, pred_idx = torch.max(probs, 1)
 
     assert outputs.shape == (1, 10)
     assert 0 <= int(pred_idx.item()) <= 9
@@ -78,14 +79,18 @@ def test_inference_pipeline_efficientnet_b0(app_symbols):
     preprocess_image = app_symbols["preprocess_image"]
 
     seed_model = get_model_architecture("EfficientNet-B0")
-    active_models = load_active_models(["EfficientNet-B0"], {"EfficientNet-B0": seed_model.state_dict()})
+    active_models = load_active_models(
+        ["EfficientNet-B0"], {"EfficientNet-B0": seed_model.state_dict()}
+    )
 
     image = Image.fromarray(np.random.randint(0, 255, size=(64, 64, 3), dtype=np.uint8), mode="RGB")
-    input_tensor = preprocess_image(image)
+    input_tensor = preprocess_image(
+        image, "EfficientNet-B0", {"EfficientNet-B0": {"input_size": 32}}
+    )
 
     outputs = active_models["EfficientNet-B0"](input_tensor)
     probs = torch.nn.functional.softmax(outputs, dim=1)
-    confidence, pred_idx = torch.max(probs, 1)
+    _confidence, pred_idx = torch.max(probs, 1)
 
     assert outputs.shape == (1, 10)
     assert 0 <= int(pred_idx.item()) <= 9

@@ -1,10 +1,10 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
+## Supported versions
 
-Security fixes are applied to the default branch and recent maintained updates.
+The default branch and recent maintained updates receive security fixes.
 
-## Reporting a Vulnerability
+## Reporting a vulnerability
 
 Please report potential vulnerabilities through GitHub Issues in this repository.
 
@@ -15,9 +15,10 @@ When reporting, include:
 - Reproduction steps or proof of concept
 - Suggested remediation, if available
 
-Avoid posting exploit details that could put users at risk. Maintainers may request
-additional details privately through GitHub as needed.
+Do not post exploit details that could put users at risk. Maintainers may request more information
+privately through GitHub.
 
-## Response Process
+## Response process
 
-Maintainers will triage reports, assess severity, and post remediation updates in issues and release or change notes when fixes are available.
+Maintainers will review each report and assess its severity. Fixes will be documented in the
+relevant issue, release notes, or changelog.

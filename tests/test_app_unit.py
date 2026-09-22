@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import numpy as np
 import pytest
 import torch
@@ -10,7 +8,7 @@ def test_preprocess_image_returns_expected_tensor(app_symbols):
     preprocess_image = app_symbols["preprocess_image"]
 
     image = Image.fromarray(np.random.randint(0, 255, size=(48, 52, 3), dtype=np.uint8), mode="RGB")
-    tensor = preprocess_image(image)
+    tensor = preprocess_image(image, "SimpleCNN")
 
     assert isinstance(tensor, torch.Tensor)
     assert tensor.shape == (1, 3, 32, 32)
@@ -21,7 +19,18 @@ def test_preprocess_image_empty_input_raises(app_symbols):
     preprocess_image = app_symbols["preprocess_image"]
 
     with pytest.raises((TypeError, AttributeError)):
-        preprocess_image(None)
+        preprocess_image(None, "SimpleCNN")
+
+
+def test_preprocess_image_uses_model_resolution(app_symbols):
+    preprocess_image = app_symbols["preprocess_image"]
+    image = Image.fromarray(np.zeros((28, 28), dtype=np.uint8), mode="L")
+
+    tensor = preprocess_image(image, "ConvNeXt-Tiny")
+    legacy_tensor = preprocess_image(image, "ConvNeXt-Tiny", {"ConvNeXt-Tiny": {"input_size": 32}})
+
+    assert tensor.shape == (1, 3, 224, 224)
+    assert legacy_tensor.shape == (1, 3, 32, 32)
 
 
 def test_load_bundle_missing_file_returns_none(app_symbols, tmp_path):
@@ -43,7 +52,15 @@ def test_load_bundle_corrupted_file_raises(app_symbols, tmp_path):
 def test_get_model_architecture_known_models(app_symbols):
     get_model_architecture = app_symbols["get_model_architecture"]
 
-    for model_name in ["ResNet18", "EfficientNet-B0", "SimpleCNN"]:
+    for model_name in [
+        "ResNet18",
+        "EfficientNet-B0",
+        "SimpleCNN",
+        "WideResNet-28-10",
+        "ConvNeXt-Tiny",
+        "MobileNetV3-Large",
+        "EfficientNetV2-S",
+    ]:
         model = get_model_architecture(model_name)
         assert isinstance(model, torch.nn.Module)
 

@@ -1,99 +1,51 @@
-# TEST REPORT
+# Test report
 
-Date: 2026-03-01
+Date: 2026-09-22
 Project: Fashion-Class-Classification
 
-## 1. System overview
+## Environment
 
-- Training entrypoint: `train.py` ([train.py](train.py#L1), [main block](train.py#L259-L294))
-- App entrypoint: `app.py` ([app.py](app.py#L1), [bundle load path](app.py#L184-L192))
-- Core training pipeline functions:
-  - `set_seed` ([train.py](train.py#L30))
-  - `get_dataloaders` ([train.py](train.py#L40))
-  - `train_model` ([train.py](train.py#L135))
-  - `evaluate_model` ([train.py](train.py#L173))
-  - `get_embeddings` ([train.py](train.py#L197))
-  - bundle save `torch.save(bundle, 'fashion_bundle.pth')` ([train.py](train.py#L293))
-- Core app pipeline functions:
-  - `load_bundle` ([app.py](app.py#L95))
-  - `get_model_architecture` ([app.py](app.py#L112))
-  - `load_active_models` ([app.py](app.py#L130))
-  - `preprocess_image` ([app.py](app.py#L151))
-  - `get_gradcam` ([app.py](app.py#L158))
+- Windows 11
+- Python 3.13.15 from the project `.venv`
+- PyTorch 2.14.0+cu130 with CUDA 13.0
+- NVIDIA CUDA runtime available: `torch.cuda.is_available() == True`
 
-## 2. Issues found
+## System overview
 
-The findings below came from an audit and stress checks against the current code. The listed guards address them.
+- Training entrypoint: [train.py](train.py)
+- Dashboard entrypoint: [app.py](app.py)
+- Shared model registry: [model_registry.py](model_registry.py)
+- Bundle artifact: `fashion_bundle.pth`
+- Dependency and tool configuration: [pyproject.toml](pyproject.toml)
 
-- Bundle loading robustness issue (missing/corrupt bundle path) → handled via `BUNDLE_LOAD_ERROR` and guarded load ([app.py](app.py#L95-L110), [app.py](app.py#L188-L191)).
-- Unsupported model names previously led to implicit runtime failures → now explicit `ValueError` in architecture and Grad-CAM paths ([app.py](app.py#L126), [app.py](app.py#L173)).
-- Missing model key in bundle now explicit `KeyError` ([app.py](app.py#L142)).
-- Invalid upload bytes now handled in app input flow ([app.py](app.py#L241-L246)).
-- Training invalid batch/schema handling now explicit `ValueError` guards ([train.py](train.py#L149-L169)).
-- Device-handling fragility resolved by forcing model-to-device in eval/embedding paths ([train.py](train.py#L177), [train.py](train.py#L209)).
-- Unknown embedding model now explicitly rejected ([train.py](train.py#L205-L207)).
-- Reproducibility seed path added and invoked ([train.py](train.py#L30-L37), [train.py](train.py#L261)).
+The training pipeline supports seven models with 32×32 or 224×224 transforms, AdamW policies, classifier-input embeddings, and versioned bundle metadata. The dashboard rebuilds models from the same registry and uses 32×32 preprocessing for legacy bundles.
 
-## 3. Tests created
+## Test coverage
 
-Test suite under `tests/` contains **24 test functions** (`^def test_` search result).
+The suite contains 37 tests:
 
-- Unit tests:
-  - training/data/model utilities: [tests/test_train_unit.py](tests/test_train_unit.py)
-  - app helper functions: [tests/test_app_unit.py](tests/test_app_unit.py)
-- Integration tests:
-  - training flow, inference flow, end-to-end bundle roundtrip: [tests/test_integration.py](tests/test_integration.py)
-- Shared fixtures/stubs:
-  - [tests/conftest.py](tests/conftest.py)
+- [tests/test_app_unit.py](tests/test_app_unit.py): 12 helper and error-path tests.
+- [tests/test_train_unit.py](tests/test_train_unit.py): 8 data, training, evaluation, and embedding tests.
+- [tests/test_integration.py](tests/test_integration.py): 5 training, inference, and bundle-roundtrip tests.
+- [tests/test_model_registry.py](tests/test_model_registry.py): 12 real architecture, transform, metadata, and validation tests.
+- [tests/conftest.py](tests/conftest.py): isolated Streamlit, Grad-CAM, dataset, and model stubs.
 
-Representative edge/robustness tests:
-- Corrupt/missing bundle behavior ([tests/test_app_unit.py](tests/test_app_unit.py#L27-L40))
-- Unsupported model errors ([tests/test_app_unit.py](tests/test_app_unit.py#L51-L54), [tests/test_app_unit.py](tests/test_app_unit.py#L95-L102), [tests/test_train_unit.py](tests/test_train_unit.py#L94-L101))
-- Invalid training batch schema ([tests/test_train_unit.py](tests/test_train_unit.py#L105-L112))
+## Verification
 
-## 4. Stress results
+The following checks passed on 2026-09-22:
 
-The final validation loop produced these results:
+- `uv lock --check`
+- `uv sync --all-groups --check`
+- `uv run python -m compileall -q app.py model_registry.py train.py tests`
+- `uv run ruff format --check .`
+- `uv run ruff check .`
+- `uv run ty check .`
+- `uv run pytest -q`: 37 passed
 
-- Full test run: `python -m pytest -q` → `24 passed`.
-- Focused stress validation script summary: `SUMMARY: 5/5 passed`.
-  - `SYSTEM.large_input_preprocess`: PASS
-  - `SYSTEM.repeated_inference`: PASS
-  - `ML.missing_bundle_handled`: PASS
-  - `DATA.invalid_schema_controlled_error`: PASS
-  - `SYSTEM.invalid_upload_rejected`: PASS
+## Verification limits
 
-The final loop produced no unhandled crash.
-
-## 5. Fixes applied
-
-Primary fix locations:
-
-- App stability + input/model guards:
-  - [app.py](app.py#L34-L39), [app.py](app.py#L95-L110), [app.py](app.py#L112-L126), [app.py](app.py#L130-L147), [app.py](app.py#L151-L156), [app.py](app.py#L158-L173), [app.py](app.py#L188-L191), [app.py](app.py#L241-L246)
-- Training robustness + reproducibility + device consistency:
-  - [train.py](train.py#L30-L37), [train.py](train.py#L135-L169), [train.py](train.py#L173-L177), [train.py](train.py#L197-L209), [train.py](train.py#L261-L262)
-- README corrected to match actual workflow/code:
-  - [README.md](README.md)
-
-## 6. Cleanup
-
-- Removed unused/generated artifacts from workspace root during cleanup cycle:
-  - `data.zip`
-  - `corrupted_bundle.pth`
-  - `__pycache__/train.cpython-313.pyc`
-- Updated ignore rules to prevent reintroduction:
-  - [.gitignore](.gitignore#L2-L6)
-
-The top-level workspace contains the active project assets and directories.
-
-## 7. Final stability
-
-Status: **STABLE** (scoped to the tested environment: Python 3.13, CPU-only, Windows)
-
-Evidence:
-- Regression tests: `24/24 passed`.
-- Stress validation: `5/5 passed`.
-- No open failing tests, no unhandled runtime regression detected in final validation loop.
-
-Note: stability has not been verified on GPU, Linux/macOS, or Python versions other than 3.13.
+- The test suite uses local stubs and does not download FashionMNIST or pretrained weights.
+- Real model forward passes use randomly initialized torchvision architectures.
+- The full seven-model GPU training run and bundle regeneration were not run.
+- Browser-level Streamlit rendering was not tested.
+- Linux and macOS were not tested.
