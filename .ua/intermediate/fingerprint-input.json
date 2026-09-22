@@ -1,0 +1,25 @@
+{
+  "projectRoot": "D:\\AI\\Github\\Fashion-Class-Classification",
+  "sourceFilePaths": [
+    ".gitattributes",
+    ".ua/.understandignore",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "README.md",
+    "SECURITY.md",
+    "TEST_REPORT.md",
+    "app.py",
+    "data/FashionMNIST/raw/t10k-images-idx3-ubyte",
+    "data/FashionMNIST/raw/t10k-labels-idx1-ubyte",
+    "data/FashionMNIST/raw/train-images-idx3-ubyte",
+    "data/FashionMNIST/raw/train-labels-idx1-ubyte",
+    "fashion_bundle.pth",
+    "requirements.txt",
+    "tests/conftest.py",
+    "tests/test_app_unit.py",
+    "tests/test_integration.py",
+    "tests/test_train_unit.py",
+    "train.py"
+  ],
+  "gitCommitHash": "1c2d8f31fc5b6781b2ec785fd911afb8baec474e"
+}

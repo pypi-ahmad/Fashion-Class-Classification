@@ -1,0 +1,137 @@
+{
+  "scriptCompleted": true,
+  "contentDigest": "1be4565953f5432b76850a5ea68ed2049aff2e0fcdde3049a64c12c4cb54cf45",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "language": "unknown",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".ua/.understandignore",
+      "language": "unknown",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "language": "markdown",
+      "sizeLines": 20,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 376,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "SECURITY.md",
+      "language": "markdown",
+      "sizeLines": 24,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "TEST_REPORT.md",
+      "language": "markdown",
+      "sizeLines": 99,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "app.py",
+      "language": "python",
+      "sizeLines": 415,
+      "fileCategory": "code"
+    },
+    {
+      "path": "data/FashionMNIST/raw/t10k-images-idx3-ubyte",
+      "language": "unknown",
+      "sizeLines": 7459,
+      "fileCategory": "code"
+    },
+    {
+      "path": "data/FashionMNIST/raw/t10k-labels-idx1-ubyte",
+      "language": "unknown",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "data/FashionMNIST/raw/train-images-idx3-ubyte",
+      "language": "unknown",
+      "sizeLines": 46274,
+      "fileCategory": "code"
+    },
+    {
+      "path": "data/FashionMNIST/raw/train-labels-idx1-ubyte",
+      "language": "unknown",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "fashion_bundle.pth",
+      "language": "pth",
+      "sizeLines": 420664,
+      "fileCategory": "code"
+    },
+    {
+      "path": "requirements.txt",
+      "language": "txt",
+      "sizeLines": 11,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "tests/conftest.py",
+      "language": "python",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/test_app_unit.py",
+      "language": "python",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/test_integration.py",
+      "language": "python",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/test_train_unit.py",
+      "language": "python",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "train.py",
+      "language": "python",
+      "sizeLines": 292,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 19,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "small",
+  "stats": {
+    "filesScanned": 19,
+    "byCategory": {
+      "code": 13,
+      "docs": 6
+    },
+    "byLanguage": {
+      "unknown": 6,
+      "markdown": 5,
+      "python": 6,
+      "pth": 1,
+      "txt": 1
+    }
+  }
+}

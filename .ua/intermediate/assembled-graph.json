@@ -1,0 +1,1741 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "Fashion-Class-Classification",
+    "languages": [
+      "Python",
+      "Markdown"
+    ],
+    "frameworks": [
+      "PyTorch",
+      "Streamlit",
+      "torchvision"
+    ],
+    "description": "Fashion-MNIST image classification project with training, evaluation, serialized model artifacts, a Streamlit inference interface, and automated tests.",
+    "analyzedAt": "2026-09-22T00:00:00Z",
+    "gitCommitHash": "1c2d8f31fc5b6781b2ec785fd911afb8baec474e"
+  },
+  "nodes": [
+    {
+      "id": "file:.gitattributes",
+      "type": "file",
+      "name": ".gitattributes",
+      "filePath": ".gitattributes",
+      "summary": "Code artifact at .gitattributes (3 lines).",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CHANGELOG.md",
+      "type": "document",
+      "name": "CHANGELOG.md",
+      "filePath": "CHANGELOG.md",
+      "summary": "Docs artifact at CHANGELOG.md (20 lines).",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CODE_OF_CONDUCT.md",
+      "type": "document",
+      "name": "CODE_OF_CONDUCT.md",
+      "filePath": "CODE_OF_CONDUCT.md",
+      "summary": "Docs artifact at CODE_OF_CONDUCT.md (38 lines).",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project guide describing the Fashion-MNIST classification application, training workflow, inference UI, and tests.",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:SECURITY.md",
+      "type": "document",
+      "name": "SECURITY.md",
+      "filePath": "SECURITY.md",
+      "summary": "Docs artifact at SECURITY.md (24 lines).",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:TEST_REPORT.md",
+      "type": "document",
+      "name": "TEST_REPORT.md",
+      "filePath": "TEST_REPORT.md",
+      "summary": "Docs artifact at TEST_REPORT.md (99 lines).",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app.py",
+      "type": "file",
+      "name": "app.py",
+      "filePath": "app.py",
+      "summary": "Streamlit inference application with model loading, image preprocessing, prediction, and Grad-CAM visualization.",
+      "tags": [
+        "code",
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:app.py:SimpleCNN",
+      "type": "class",
+      "name": "SimpleCNN",
+      "filePath": "app.py",
+      "summary": "Class SimpleCNN defined in app.py.",
+      "tags": [
+        "python",
+        "class"
+      ]
+    },
+    {
+      "id": "function:app.py:load_data",
+      "type": "function",
+      "name": "load_data",
+      "filePath": "app.py",
+      "summary": "Function load_data defined in app.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:app.py:load_bundle",
+      "type": "function",
+      "name": "load_bundle",
+      "filePath": "app.py",
+      "summary": "Function load_bundle defined in app.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:app.py:get_model_architecture",
+      "type": "function",
+      "name": "get_model_architecture",
+      "filePath": "app.py",
+      "summary": "Function get_model_architecture defined in app.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:app.py:load_active_models",
+      "type": "function",
+      "name": "load_active_models",
+      "filePath": "app.py",
+      "summary": "Function load_active_models defined in app.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:app.py:preprocess_image",
+      "type": "function",
+      "name": "preprocess_image",
+      "filePath": "app.py",
+      "summary": "Function preprocess_image defined in app.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:app.py:get_gradcam",
+      "type": "function",
+      "name": "get_gradcam",
+      "filePath": "app.py",
+      "summary": "Function get_gradcam defined in app.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:app.py:__init__",
+      "type": "function",
+      "name": "__init__",
+      "filePath": "app.py",
+      "summary": "Function __init__ defined in app.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:app.py:forward",
+      "type": "function",
+      "name": "forward",
+      "filePath": "app.py",
+      "summary": "Function forward defined in app.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:app.py:get_embedding",
+      "type": "function",
+      "name": "get_embedding",
+      "filePath": "app.py",
+      "summary": "Function get_embedding defined in app.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "resource:data/FashionMNIST/raw/t10k-images-idx3-ubyte",
+      "type": "resource",
+      "name": "t10k-images-idx3-ubyte",
+      "filePath": "data/FashionMNIST/raw/t10k-images-idx3-ubyte",
+      "summary": "Code artifact at data/FashionMNIST/raw/t10k-images-idx3-ubyte (7459 lines).",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "resource:data/FashionMNIST/raw/t10k-labels-idx1-ubyte",
+      "type": "resource",
+      "name": "t10k-labels-idx1-ubyte",
+      "filePath": "data/FashionMNIST/raw/t10k-labels-idx1-ubyte",
+      "summary": "Code artifact at data/FashionMNIST/raw/t10k-labels-idx1-ubyte (0 lines).",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "resource:data/FashionMNIST/raw/train-images-idx3-ubyte",
+      "type": "resource",
+      "name": "train-images-idx3-ubyte",
+      "filePath": "data/FashionMNIST/raw/train-images-idx3-ubyte",
+      "summary": "Code artifact at data/FashionMNIST/raw/train-images-idx3-ubyte (46274 lines).",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "resource:data/FashionMNIST/raw/train-labels-idx1-ubyte",
+      "type": "resource",
+      "name": "train-labels-idx1-ubyte",
+      "filePath": "data/FashionMNIST/raw/train-labels-idx1-ubyte",
+      "summary": "Code artifact at data/FashionMNIST/raw/train-labels-idx1-ubyte (0 lines).",
+      "tags": [
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "resource:fashion_bundle.pth",
+      "type": "resource",
+      "name": "fashion_bundle.pth",
+      "filePath": "fashion_bundle.pth",
+      "summary": "Code artifact at fashion_bundle.pth (420664 lines).",
+      "tags": [
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:requirements.txt",
+      "type": "config",
+      "name": "requirements.txt",
+      "filePath": "requirements.txt",
+      "summary": "Docs artifact at requirements.txt (11 lines).",
+      "tags": [
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/conftest.py",
+      "type": "file",
+      "name": "conftest.py",
+      "filePath": "tests/conftest.py",
+      "summary": "Code artifact at tests/conftest.py (139 lines).",
+      "tags": [
+        "code",
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:tests/conftest.py:FakeStreamlit",
+      "type": "class",
+      "name": "FakeStreamlit",
+      "filePath": "tests/conftest.py",
+      "summary": "Class FakeStreamlit defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "class"
+      ]
+    },
+    {
+      "id": "class:tests/conftest.py:DummyClassifierOutputTarget",
+      "type": "class",
+      "name": "DummyClassifierOutputTarget",
+      "filePath": "tests/conftest.py",
+      "summary": "Class DummyClassifierOutputTarget defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "class"
+      ]
+    },
+    {
+      "id": "class:tests/conftest.py:DummyGradCAM",
+      "type": "class",
+      "name": "DummyGradCAM",
+      "filePath": "tests/conftest.py",
+      "summary": "Class DummyGradCAM defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "class"
+      ]
+    },
+    {
+      "id": "class:tests/conftest.py:FakeFashionMNIST",
+      "type": "class",
+      "name": "FakeFashionMNIST",
+      "filePath": "tests/conftest.py",
+      "summary": "Class FakeFashionMNIST defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "class"
+      ]
+    },
+    {
+      "id": "class:tests/conftest.py:TinyResNet",
+      "type": "class",
+      "name": "TinyResNet",
+      "filePath": "tests/conftest.py",
+      "summary": "Class TinyResNet defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "class"
+      ]
+    },
+    {
+      "id": "class:tests/conftest.py:TinyEffNet",
+      "type": "class",
+      "name": "TinyEffNet",
+      "filePath": "tests/conftest.py",
+      "summary": "Class TinyEffNet defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "class"
+      ]
+    },
+    {
+      "id": "function:tests/conftest.py:app_symbols",
+      "type": "function",
+      "name": "app_symbols",
+      "filePath": "tests/conftest.py",
+      "summary": "Function app_symbols defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/conftest.py:cache_resource",
+      "type": "function",
+      "name": "cache_resource",
+      "filePath": "tests/conftest.py",
+      "summary": "Function cache_resource defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/conftest.py:__init__",
+      "type": "function",
+      "name": "__init__",
+      "filePath": "tests/conftest.py",
+      "summary": "Function __init__ defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/conftest.py:__call__",
+      "type": "function",
+      "name": "__call__",
+      "filePath": "tests/conftest.py",
+      "summary": "Function __call__ defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/conftest.py:__len__",
+      "type": "function",
+      "name": "__len__",
+      "filePath": "tests/conftest.py",
+      "summary": "Function __len__ defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/conftest.py:__getitem__",
+      "type": "function",
+      "name": "__getitem__",
+      "filePath": "tests/conftest.py",
+      "summary": "Function __getitem__ defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/conftest.py:forward",
+      "type": "function",
+      "name": "forward",
+      "filePath": "tests/conftest.py",
+      "summary": "Function forward defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/conftest.py:decorator",
+      "type": "function",
+      "name": "decorator",
+      "filePath": "tests/conftest.py",
+      "summary": "Function decorator defined in tests/conftest.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "file:tests/test_app_unit.py",
+      "type": "file",
+      "name": "test_app_unit.py",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Code artifact at tests/test_app_unit.py (103 lines).",
+      "tags": [
+        "code",
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_preprocess_image_returns_expected_tensor",
+      "type": "function",
+      "name": "test_preprocess_image_returns_expected_tensor",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_preprocess_image_returns_expected_tensor defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_preprocess_image_empty_input_raises",
+      "type": "function",
+      "name": "test_preprocess_image_empty_input_raises",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_preprocess_image_empty_input_raises defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_load_bundle_missing_file_returns_none",
+      "type": "function",
+      "name": "test_load_bundle_missing_file_returns_none",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_load_bundle_missing_file_returns_none defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_load_bundle_corrupted_file_raises",
+      "type": "function",
+      "name": "test_load_bundle_corrupted_file_raises",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_load_bundle_corrupted_file_raises defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_get_model_architecture_known_models",
+      "type": "function",
+      "name": "test_get_model_architecture_known_models",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_get_model_architecture_known_models defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_get_model_architecture_unknown_model_raises",
+      "type": "function",
+      "name": "test_get_model_architecture_unknown_model_raises",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_get_model_architecture_unknown_model_raises defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_load_active_models_loads_simplecnn",
+      "type": "function",
+      "name": "test_load_active_models_loads_simplecnn",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_load_active_models_loads_simplecnn defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_load_active_models_missing_model_key_raises",
+      "type": "function",
+      "name": "test_load_active_models_missing_model_key_raises",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_load_active_models_missing_model_key_raises defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_load_active_models_corrupted_state_dict_raises",
+      "type": "function",
+      "name": "test_load_active_models_corrupted_state_dict_raises",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_load_active_models_corrupted_state_dict_raises defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_get_gradcam_returns_map",
+      "type": "function",
+      "name": "test_get_gradcam_returns_map",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_get_gradcam_returns_map defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_app_unit.py:test_get_gradcam_unknown_model_raises",
+      "type": "function",
+      "name": "test_get_gradcam_unknown_model_raises",
+      "filePath": "tests/test_app_unit.py",
+      "summary": "Function test_get_gradcam_unknown_model_raises defined in tests/test_app_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "file:tests/test_integration.py",
+      "type": "file",
+      "name": "test_integration.py",
+      "filePath": "tests/test_integration.py",
+      "summary": "Code artifact at tests/test_integration.py (124 lines).",
+      "tags": [
+        "code",
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_integration.py:test_training_pipeline_integration",
+      "type": "function",
+      "name": "test_training_pipeline_integration",
+      "filePath": "tests/test_integration.py",
+      "summary": "Function test_training_pipeline_integration defined in tests/test_integration.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_integration.py:test_inference_pipeline_integration",
+      "type": "function",
+      "name": "test_inference_pipeline_integration",
+      "filePath": "tests/test_integration.py",
+      "summary": "Function test_inference_pipeline_integration defined in tests/test_integration.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_integration.py:test_inference_pipeline_resnet18",
+      "type": "function",
+      "name": "test_inference_pipeline_resnet18",
+      "filePath": "tests/test_integration.py",
+      "summary": "Function test_inference_pipeline_resnet18 defined in tests/test_integration.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_integration.py:test_inference_pipeline_efficientnet_b0",
+      "type": "function",
+      "name": "test_inference_pipeline_efficientnet_b0",
+      "filePath": "tests/test_integration.py",
+      "summary": "Function test_inference_pipeline_efficientnet_b0 defined in tests/test_integration.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_integration.py:test_end_to_end_bundle_roundtrip",
+      "type": "function",
+      "name": "test_end_to_end_bundle_roundtrip",
+      "filePath": "tests/test_integration.py",
+      "summary": "Function test_end_to_end_bundle_roundtrip defined in tests/test_integration.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "file:tests/test_train_unit.py",
+      "type": "file",
+      "name": "test_train_unit.py",
+      "filePath": "tests/test_train_unit.py",
+      "summary": "Code artifact at tests/test_train_unit.py (113 lines).",
+      "tags": [
+        "code",
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_train_unit.py:test_simplecnn_forward_and_embedding_shapes",
+      "type": "function",
+      "name": "test_simplecnn_forward_and_embedding_shapes",
+      "filePath": "tests/test_train_unit.py",
+      "summary": "Function test_simplecnn_forward_and_embedding_shapes defined in tests/test_train_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_train_unit.py:test_get_dataloaders_returns_expected_shapes",
+      "type": "function",
+      "name": "test_get_dataloaders_returns_expected_shapes",
+      "filePath": "tests/test_train_unit.py",
+      "summary": "Function test_get_dataloaders_returns_expected_shapes defined in tests/test_train_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_train_unit.py:test_train_model_updates_parameters",
+      "type": "function",
+      "name": "test_train_model_updates_parameters",
+      "filePath": "tests/test_train_unit.py",
+      "summary": "Function test_train_model_updates_parameters defined in tests/test_train_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_train_unit.py:test_evaluate_model_returns_metrics",
+      "type": "function",
+      "name": "test_evaluate_model_returns_metrics",
+      "filePath": "tests/test_train_unit.py",
+      "summary": "Function test_evaluate_model_returns_metrics defined in tests/test_train_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_train_unit.py:test_get_embeddings_simplecnn_shapes",
+      "type": "function",
+      "name": "test_get_embeddings_simplecnn_shapes",
+      "filePath": "tests/test_train_unit.py",
+      "summary": "Function test_get_embeddings_simplecnn_shapes defined in tests/test_train_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_train_unit.py:test_get_embeddings_resnet_path_uses_hook",
+      "type": "function",
+      "name": "test_get_embeddings_resnet_path_uses_hook",
+      "filePath": "tests/test_train_unit.py",
+      "summary": "Function test_get_embeddings_resnet_path_uses_hook defined in tests/test_train_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_train_unit.py:test_get_embeddings_unknown_model_name_raises",
+      "type": "function",
+      "name": "test_get_embeddings_unknown_model_name_raises",
+      "filePath": "tests/test_train_unit.py",
+      "summary": "Function test_get_embeddings_unknown_model_name_raises defined in tests/test_train_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:tests/test_train_unit.py:test_train_model_invalid_batch_schema_raises_value_error",
+      "type": "function",
+      "name": "test_train_model_invalid_batch_schema_raises_value_error",
+      "filePath": "tests/test_train_unit.py",
+      "summary": "Function test_train_model_invalid_batch_schema_raises_value_error defined in tests/test_train_unit.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "file:train.py",
+      "type": "file",
+      "name": "train.py",
+      "filePath": "train.py",
+      "summary": "Training and evaluation pipeline for SimpleCNN, ResNet18, and EfficientNet-B0 on Fashion-MNIST.",
+      "tags": [
+        "code",
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:train.py:set_seed",
+      "type": "function",
+      "name": "set_seed",
+      "filePath": "train.py",
+      "summary": "Function set_seed defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:train.py:get_dataloaders",
+      "type": "function",
+      "name": "get_dataloaders",
+      "filePath": "train.py",
+      "summary": "Function get_dataloaders defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "class:train.py:SimpleCNN",
+      "type": "class",
+      "name": "SimpleCNN",
+      "filePath": "train.py",
+      "summary": "Class SimpleCNN defined in train.py.",
+      "tags": [
+        "python",
+        "class"
+      ]
+    },
+    {
+      "id": "function:train.py:get_models",
+      "type": "function",
+      "name": "get_models",
+      "filePath": "train.py",
+      "summary": "Function get_models defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:train.py:train_model",
+      "type": "function",
+      "name": "train_model",
+      "filePath": "train.py",
+      "summary": "Function train_model defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:train.py:evaluate_model",
+      "type": "function",
+      "name": "evaluate_model",
+      "filePath": "train.py",
+      "summary": "Function evaluate_model defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:train.py:get_embeddings",
+      "type": "function",
+      "name": "get_embeddings",
+      "filePath": "train.py",
+      "summary": "Function get_embeddings defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:train.py:__init__",
+      "type": "function",
+      "name": "__init__",
+      "filePath": "train.py",
+      "summary": "Function __init__ defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:train.py:forward",
+      "type": "function",
+      "name": "forward",
+      "filePath": "train.py",
+      "summary": "Function forward defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:train.py:get_embedding",
+      "type": "function",
+      "name": "get_embedding",
+      "filePath": "train.py",
+      "summary": "Function get_embedding defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:train.py:get_activation",
+      "type": "function",
+      "name": "get_activation",
+      "filePath": "train.py",
+      "summary": "Function get_activation defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "function:train.py:hook",
+      "type": "function",
+      "name": "hook",
+      "filePath": "train.py",
+      "summary": "Function hook defined in train.py.",
+      "tags": [
+        "python",
+        "function"
+      ]
+    },
+    {
+      "id": "concept:torch",
+      "type": "concept",
+      "name": "torch",
+      "summary": "External dependency used by the project: torch.",
+      "tags": [
+        "dependency"
+      ]
+    },
+    {
+      "id": "concept:torchvision",
+      "type": "concept",
+      "name": "torchvision",
+      "summary": "External dependency used by the project: torchvision.",
+      "tags": [
+        "dependency"
+      ]
+    },
+    {
+      "id": "concept:streamlit",
+      "type": "concept",
+      "name": "streamlit",
+      "summary": "External dependency used by the project: streamlit.",
+      "tags": [
+        "dependency"
+      ]
+    },
+    {
+      "id": "concept:numpy",
+      "type": "concept",
+      "name": "numpy",
+      "summary": "External dependency used by the project: numpy.",
+      "tags": [
+        "dependency"
+      ]
+    },
+    {
+      "id": "concept:PIL",
+      "type": "concept",
+      "name": "PIL",
+      "summary": "External dependency used by the project: PIL.",
+      "tags": [
+        "dependency"
+      ]
+    },
+    {
+      "id": "concept:sklearn",
+      "type": "concept",
+      "name": "sklearn",
+      "summary": "External dependency used by the project: sklearn.",
+      "tags": [
+        "dependency"
+      ]
+    },
+    {
+      "id": "concept:pandas",
+      "type": "concept",
+      "name": "pandas",
+      "summary": "External dependency used by the project: pandas.",
+      "tags": [
+        "dependency"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:app.py",
+      "target": "class:app.py:SimpleCNN",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "function:app.py:load_data",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "function:app.py:load_bundle",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "function:app.py:get_model_architecture",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "function:app.py:load_active_models",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "function:app.py:preprocess_image",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "function:app.py:get_gradcam",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "function:app.py:__init__",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "function:app.py:forward",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "function:app.py:get_embedding",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "concept:streamlit",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "concept:torch",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "concept:torchvision",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "concept:PIL",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "concept:numpy",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "concept:sklearn",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "concept:sklearn",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "concept:pandas",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "class:tests/conftest.py:FakeStreamlit",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "class:tests/conftest.py:DummyClassifierOutputTarget",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "class:tests/conftest.py:DummyGradCAM",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "class:tests/conftest.py:FakeFashionMNIST",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "class:tests/conftest.py:TinyResNet",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "class:tests/conftest.py:TinyEffNet",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:app_symbols",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:cache_resource",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:__init__",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:__init__",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:__call__",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:__init__",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:__len__",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:__getitem__",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:__init__",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:forward",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:__init__",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:forward",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "function:tests/conftest.py:decorator",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "concept:numpy",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "concept:torch",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "concept:PIL",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "concept:torch",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "concept:torchvision",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_preprocess_image_returns_expected_tensor",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_preprocess_image_empty_input_raises",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_load_bundle_missing_file_returns_none",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_load_bundle_corrupted_file_raises",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_get_model_architecture_known_models",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_get_model_architecture_unknown_model_raises",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_load_active_models_loads_simplecnn",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_load_active_models_missing_model_key_raises",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_load_active_models_corrupted_state_dict_raises",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_get_gradcam_returns_map",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "function:tests/test_app_unit.py:test_get_gradcam_unknown_model_raises",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "concept:numpy",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "concept:torch",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_app_unit.py",
+      "target": "concept:PIL",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_integration.py",
+      "target": "function:tests/test_integration.py:test_training_pipeline_integration",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_integration.py",
+      "target": "function:tests/test_integration.py:test_inference_pipeline_integration",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_integration.py",
+      "target": "function:tests/test_integration.py:test_inference_pipeline_resnet18",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_integration.py",
+      "target": "function:tests/test_integration.py:test_inference_pipeline_efficientnet_b0",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_integration.py",
+      "target": "function:tests/test_integration.py:test_end_to_end_bundle_roundtrip",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_integration.py",
+      "target": "concept:numpy",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_integration.py",
+      "target": "concept:torch",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_integration.py",
+      "target": "concept:PIL",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_train_unit.py",
+      "target": "function:tests/test_train_unit.py:test_simplecnn_forward_and_embedding_shapes",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_train_unit.py",
+      "target": "function:tests/test_train_unit.py:test_get_dataloaders_returns_expected_shapes",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_train_unit.py",
+      "target": "function:tests/test_train_unit.py:test_train_model_updates_parameters",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_train_unit.py",
+      "target": "function:tests/test_train_unit.py:test_evaluate_model_returns_metrics",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_train_unit.py",
+      "target": "function:tests/test_train_unit.py:test_get_embeddings_simplecnn_shapes",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_train_unit.py",
+      "target": "function:tests/test_train_unit.py:test_get_embeddings_resnet_path_uses_hook",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_train_unit.py",
+      "target": "function:tests/test_train_unit.py:test_get_embeddings_unknown_model_name_raises",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_train_unit.py",
+      "target": "function:tests/test_train_unit.py:test_train_model_invalid_batch_schema_raises_value_error",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_train_unit.py",
+      "target": "concept:torch",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:tests/test_train_unit.py",
+      "target": "concept:torch",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:set_seed",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:get_dataloaders",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "class:train.py:SimpleCNN",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:get_models",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:train_model",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:evaluate_model",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:get_embeddings",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:__init__",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:forward",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:get_embedding",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:get_activation",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "function:train.py:hook",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "concept:torch",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "concept:torchvision",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "concept:torch",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "concept:sklearn",
+      "type": "depends_on",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:app.py",
+      "type": "documents",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:train.py",
+      "type": "documents",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "config:requirements.txt",
+      "target": "file:app.py",
+      "type": "configures",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "config:requirements.txt",
+      "target": "file:train.py",
+      "type": "configures",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "resource:fashion_bundle.pth",
+      "type": "reads_from",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "resource:data/FashionMNIST/raw/train-images-idx3-ubyte",
+      "type": "reads_from",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "resource:data/FashionMNIST/raw/train-labels-idx1-ubyte",
+      "type": "reads_from",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "file:tests/conftest.py",
+      "type": "tested_by",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "file:app.py",
+      "target": "file:tests/test_app_unit.py",
+      "type": "tested_by",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "file:tests/test_integration.py",
+      "type": "tested_by",
+      "weight": 0.5,
+      "direction": "forward"
+    },
+    {
+      "source": "file:train.py",
+      "target": "file:tests/test_train_unit.py",
+      "type": "tested_by",
+      "weight": 0.5,
+      "direction": "forward"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:documentation",
+      "name": "Documentation and Governance",
+      "description": "Project documentation, contribution guidance, security policy, and test reporting.",
+      "nodeIds": [
+        "document:CHANGELOG.md",
+        "document:CODE_OF_CONDUCT.md",
+        "document:README.md",
+        "document:SECURITY.md",
+        "document:TEST_REPORT.md"
+      ]
+    },
+    {
+      "id": "layer:training-and-models",
+      "name": "Training and Model Artifacts",
+      "description": "Training code, dataset resources, and the serialized model bundle.",
+      "nodeIds": [
+        "file:train.py",
+        "resource:fashion_bundle.pth",
+        "resource:data/FashionMNIST/raw/t10k-images-idx3-ubyte",
+        "resource:data/FashionMNIST/raw/t10k-labels-idx1-ubyte",
+        "resource:data/FashionMNIST/raw/train-images-idx3-ubyte",
+        "resource:data/FashionMNIST/raw/train-labels-idx1-ubyte"
+      ]
+    },
+    {
+      "id": "layer:inference-application",
+      "name": "Inference Application",
+      "description": "Streamlit application and its runtime dependency configuration.",
+      "nodeIds": [
+        "file:app.py",
+        "config:requirements.txt"
+      ]
+    },
+    {
+      "id": "layer:quality",
+      "name": "Tests and Quality",
+      "description": "Automated tests and repository metadata supporting verification.",
+      "nodeIds": [
+        "file:.gitattributes",
+        "file:tests/conftest.py",
+        "file:tests/test_app_unit.py",
+        "file:tests/test_integration.py",
+        "file:tests/test_train_unit.py"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Project Overview",
+      "description": "Read the README to understand the Fashion-MNIST classification project and its workflow.",
+      "nodeIds": [
+        "document:README.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Training Pipeline",
+      "description": "Follow train.py from dataset loading through model training, evaluation, and embedding extraction.",
+      "nodeIds": [
+        "file:train.py"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Inference Application",
+      "description": "Inspect app.py to see model loading, preprocessing, prediction, and Grad-CAM visualization in Streamlit.",
+      "nodeIds": [
+        "file:app.py"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Verification",
+      "description": "Review the unit and integration tests that protect training and inference behavior.",
+      "nodeIds": [
+        "file:tests/conftest.py",
+        "file:tests/test_app_unit.py",
+        "file:tests/test_integration.py",
+        "file:tests/test_train_unit.py"
+      ]
+    }
+  ]
+}

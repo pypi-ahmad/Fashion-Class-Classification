@@ -1,0 +1,953 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "1c2d8f31fc5b6781b2ec785fd911afb8baec474e",
+  "generatedAt": "2026-09-22T07:34:56.667Z",
+  "files": {
+    ".gitattributes": {
+      "filePath": ".gitattributes",
+      "contentHash": "290832563cc62692cc00d6615eaac7c147407568eaa0eb580dccd012d8fe6877",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": false
+    },
+    ".ua/.understandignore": {
+      "filePath": ".ua/.understandignore",
+      "contentHash": "4be2263e570f343d00b1a4d6c0297911e7ab335e738cd5a181aba161b6d7880c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": false
+    },
+    "CHANGELOG.md": {
+      "filePath": "CHANGELOG.md",
+      "contentHash": "dd9ff491c41dbc0333363db631c263b8aa50da054d89b66ae67e2bb1baa6731e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "CODE_OF_CONDUCT.md": {
+      "filePath": "CODE_OF_CONDUCT.md",
+      "contentHash": "f06c7cfd36fef835b6cd63e61dd62c9d85fbe7e11aaabd357d18a933e375e426",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "db4b8f65303f195d1f07c1f061782336bfe68f63e759f365e5d73bacdacfaa50",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 377,
+      "hasStructuralAnalysis": true
+    },
+    "SECURITY.md": {
+      "filePath": "SECURITY.md",
+      "contentHash": "5f5817696041950c546dd062ac26f41a9216fa023c1a1c3199eee79157595c40",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "TEST_REPORT.md": {
+      "filePath": "TEST_REPORT.md",
+      "contentHash": "278f0ff5eb4567c1e16a920a5068e79d91d41a594bad710af799f824bef3f230",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 100,
+      "hasStructuralAnalysis": true
+    },
+    "app.py": {
+      "filePath": "app.py",
+      "contentHash": "e1eb81e5134c94bb759b79ef923c1c90fb14f1ec82a256d51972e5a6a4d4d0f5",
+      "functions": [
+        {
+          "name": "load_data",
+          "params": [],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "load_bundle",
+          "params": [],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "get_model_architecture",
+          "params": [
+            "model_name"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "load_active_models",
+          "params": [
+            "selected_models",
+            "_bundle_models"
+          ],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "preprocess_image",
+          "params": [
+            "image"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "get_gradcam",
+          "params": [
+            "model",
+            "model_name",
+            "input_tensor",
+            "target_class_idx"
+          ],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [
+        {
+          "name": "SimpleCNN",
+          "methods": [
+            "__init__",
+            "forward",
+            "get_embedding"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 30
+        }
+      ],
+      "imports": [
+        {
+          "source": "streamlit",
+          "specifiers": [
+            "st"
+          ]
+        },
+        {
+          "source": "torch",
+          "specifiers": [
+            "torch"
+          ]
+        },
+        {
+          "source": "torch.nn",
+          "specifiers": [
+            "nn"
+          ]
+        },
+        {
+          "source": "torchvision",
+          "specifiers": [
+            "models",
+            "transforms",
+            "datasets"
+          ]
+        },
+        {
+          "source": "PIL",
+          "specifiers": [
+            "Image",
+            "UnidentifiedImageError"
+          ]
+        },
+        {
+          "source": "numpy",
+          "specifiers": [
+            "np"
+          ]
+        },
+        {
+          "source": "plotly.express",
+          "specifiers": [
+            "px"
+          ]
+        },
+        {
+          "source": "plotly.graph_objects",
+          "specifiers": [
+            "go"
+          ]
+        },
+        {
+          "source": "sklearn.decomposition",
+          "specifiers": [
+            "PCA"
+          ]
+        },
+        {
+          "source": "sklearn.metrics",
+          "specifiers": [
+            "confusion_matrix"
+          ]
+        },
+        {
+          "source": "pytorch_grad_cam",
+          "specifiers": [
+            "GradCAM"
+          ]
+        },
+        {
+          "source": "pytorch_grad_cam.utils.model_targets",
+          "specifiers": [
+            "ClassifierOutputTarget"
+          ]
+        },
+        {
+          "source": "pytorch_grad_cam.utils.image",
+          "specifiers": [
+            "show_cam_on_image"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "cv2",
+          "specifiers": [
+            "cv2"
+          ]
+        },
+        {
+          "source": "pandas",
+          "specifiers": [
+            "pd"
+          ]
+        }
+      ],
+      "exports": [
+        "SimpleCNN",
+        "load_data",
+        "load_bundle",
+        "get_model_architecture",
+        "load_active_models",
+        "preprocess_image",
+        "get_gradcam"
+      ],
+      "totalLines": 416,
+      "hasStructuralAnalysis": true
+    },
+    "data/FashionMNIST/raw/t10k-images-idx3-ubyte": {
+      "filePath": "data/FashionMNIST/raw/t10k-images-idx3-ubyte",
+      "contentHash": "1f906f44177af5913ac80c8e98e1ef84eadc3fa322694745fa7a5fe4e92c658a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7460,
+      "hasStructuralAnalysis": false
+    },
+    "data/FashionMNIST/raw/t10k-labels-idx1-ubyte": {
+      "filePath": "data/FashionMNIST/raw/t10k-labels-idx1-ubyte",
+      "contentHash": "0402a96d92fd2663957122ceb108a494c5af83dab82d92729df917d7dec38c34",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": false
+    },
+    "data/FashionMNIST/raw/train-images-idx3-ubyte": {
+      "filePath": "data/FashionMNIST/raw/train-images-idx3-ubyte",
+      "contentHash": "73cf930091c09f9997e984da1e0062958c3a708158d8c45f15a9af72bed5b97a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46275,
+      "hasStructuralAnalysis": false
+    },
+    "data/FashionMNIST/raw/train-labels-idx1-ubyte": {
+      "filePath": "data/FashionMNIST/raw/train-labels-idx1-ubyte",
+      "contentHash": "4bf1b0c98bac019cc51da9936f108a14e478d2d002632004bcfb9bcb59326ec4",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": false
+    },
+    "fashion_bundle.pth": {
+      "filePath": "fashion_bundle.pth",
+      "contentHash": "c94c46caff5fc7a4750e0319be062a5ab93e5a09877cb2092963064cf55e02e1",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 420665,
+      "hasStructuralAnalysis": false
+    },
+    "requirements.txt": {
+      "filePath": "requirements.txt",
+      "contentHash": "5e13bb0ec7456b226c9084eb7847871948887aea35c1812c6615e5baccf16520",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": false
+    },
+    "tests/conftest.py": {
+      "filePath": "tests/conftest.py",
+      "contentHash": "0e547ddfb06af75d644b7a1d752be1e2ced68348334cbee6a7a43a9534d7bb7f",
+      "functions": [
+        {
+          "name": "app_symbols",
+          "params": [],
+          "exported": true,
+          "lineCount": 45
+        }
+      ],
+      "classes": [
+        {
+          "name": "FakeStreamlit",
+          "methods": [
+            "cache_resource"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "DummyClassifierOutputTarget",
+          "methods": [
+            "__init__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "DummyGradCAM",
+          "methods": [
+            "__init__",
+            "__call__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "FakeFashionMNIST",
+          "methods": [
+            "__init__",
+            "__len__",
+            "__getitem__"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "TinyResNet",
+          "methods": [
+            "__init__",
+            "forward"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "TinyEffNet",
+          "methods": [
+            "__init__",
+            "forward"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 16
+        }
+      ],
+      "imports": [
+        {
+          "source": "ast",
+          "specifiers": [
+            "ast"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "numpy",
+          "specifiers": [
+            "np"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "torch",
+          "specifiers": [
+            "torch"
+          ]
+        },
+        {
+          "source": "torch.nn",
+          "specifiers": [
+            "nn"
+          ]
+        },
+        {
+          "source": "PIL",
+          "specifiers": [
+            "Image"
+          ]
+        },
+        {
+          "source": "torch.utils.data",
+          "specifiers": [
+            "Dataset"
+          ]
+        },
+        {
+          "source": "torchvision",
+          "specifiers": [
+            "datasets",
+            "models",
+            "transforms"
+          ]
+        }
+      ],
+      "exports": [
+        "FakeStreamlit",
+        "DummyClassifierOutputTarget",
+        "DummyGradCAM",
+        "FakeFashionMNIST",
+        "TinyResNet",
+        "TinyEffNet",
+        "app_symbols"
+      ],
+      "totalLines": 140,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_app_unit.py": {
+      "filePath": "tests/test_app_unit.py",
+      "contentHash": "4d6cd18ed91606dc69a827373e7b19ec7b62b046977e121b8eafe66574a26a06",
+      "functions": [
+        {
+          "name": "test_preprocess_image_returns_expected_tensor",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_preprocess_image_empty_input_raises",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_load_bundle_missing_file_returns_none",
+          "params": [
+            "app_symbols",
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_load_bundle_corrupted_file_raises",
+          "params": [
+            "app_symbols",
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "test_get_model_architecture_known_models",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_get_model_architecture_unknown_model_raises",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_load_active_models_loads_simplecnn",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_load_active_models_missing_model_key_raises",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_load_active_models_corrupted_state_dict_raises",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "test_get_gradcam_returns_map",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_get_gradcam_unknown_model_raises",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "numpy",
+          "specifiers": [
+            "np"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "torch",
+          "specifiers": [
+            "torch"
+          ]
+        },
+        {
+          "source": "PIL",
+          "specifiers": [
+            "Image"
+          ]
+        }
+      ],
+      "exports": [
+        "test_preprocess_image_returns_expected_tensor",
+        "test_preprocess_image_empty_input_raises",
+        "test_load_bundle_missing_file_returns_none",
+        "test_load_bundle_corrupted_file_raises",
+        "test_get_model_architecture_known_models",
+        "test_get_model_architecture_unknown_model_raises",
+        "test_load_active_models_loads_simplecnn",
+        "test_load_active_models_missing_model_key_raises",
+        "test_load_active_models_corrupted_state_dict_raises",
+        "test_get_gradcam_returns_map",
+        "test_get_gradcam_unknown_model_raises"
+      ],
+      "totalLines": 104,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_integration.py": {
+      "filePath": "tests/test_integration.py",
+      "contentHash": "89fd3097bc8dfab28f2200c1cc3ced6a04ed4638bb75cb4a9879430e9005c5e8",
+      "functions": [
+        {
+          "name": "test_training_pipeline_integration",
+          "params": [
+            "monkeypatch",
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "test_inference_pipeline_integration",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "test_inference_pipeline_resnet18",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "test_inference_pipeline_efficientnet_b0",
+          "params": [
+            "app_symbols"
+          ],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "test_end_to_end_bundle_roundtrip",
+          "params": [
+            "monkeypatch",
+            "app_symbols",
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 30
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "numpy",
+          "specifiers": [
+            "np"
+          ]
+        },
+        {
+          "source": "torch",
+          "specifiers": [
+            "torch"
+          ]
+        },
+        {
+          "source": "PIL",
+          "specifiers": [
+            "Image"
+          ]
+        },
+        {
+          "source": "train",
+          "specifiers": [
+            "train"
+          ]
+        },
+        {
+          "source": "tests.conftest",
+          "specifiers": [
+            "FakeFashionMNIST",
+            "TinyEffNet",
+            "TinyResNet"
+          ]
+        }
+      ],
+      "exports": [
+        "test_training_pipeline_integration",
+        "test_inference_pipeline_integration",
+        "test_inference_pipeline_resnet18",
+        "test_inference_pipeline_efficientnet_b0",
+        "test_end_to_end_bundle_roundtrip"
+      ],
+      "totalLines": 125,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_train_unit.py": {
+      "filePath": "tests/test_train_unit.py",
+      "contentHash": "96f3603578a0ab6e35cfd5ac46e1fbf9ceae3501ae04c50e1002cb46ab4fa05b",
+      "functions": [
+        {
+          "name": "test_simplecnn_forward_and_embedding_shapes",
+          "params": [
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "test_get_dataloaders_returns_expected_shapes",
+          "params": [
+            "monkeypatch",
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_train_model_updates_parameters",
+          "params": [
+            "monkeypatch",
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_evaluate_model_returns_metrics",
+          "params": [
+            "monkeypatch",
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_get_embeddings_simplecnn_shapes",
+          "params": [
+            "monkeypatch",
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_get_embeddings_resnet_path_uses_hook",
+          "params": [
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "test_get_embeddings_unknown_model_name_raises",
+          "params": [
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_train_model_invalid_batch_schema_raises_value_error",
+          "params": [
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "torch",
+          "specifiers": [
+            "torch"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "torch.utils.data",
+          "specifiers": [
+            "DataLoader"
+          ]
+        },
+        {
+          "source": "train",
+          "specifiers": [
+            "train"
+          ]
+        },
+        {
+          "source": "tests.conftest",
+          "specifiers": [
+            "FakeFashionMNIST",
+            "TinyResNet"
+          ]
+        }
+      ],
+      "exports": [
+        "test_simplecnn_forward_and_embedding_shapes",
+        "test_get_dataloaders_returns_expected_shapes",
+        "test_train_model_updates_parameters",
+        "test_evaluate_model_returns_metrics",
+        "test_get_embeddings_simplecnn_shapes",
+        "test_get_embeddings_resnet_path_uses_hook",
+        "test_get_embeddings_unknown_model_name_raises",
+        "test_train_model_invalid_batch_schema_raises_value_error"
+      ],
+      "totalLines": 114,
+      "hasStructuralAnalysis": true
+    },
+    "train.py": {
+      "filePath": "train.py",
+      "contentHash": "c14153a6e52b19615138feb68d606bfb67044d5695b32936e8ec8af267311bf9",
+      "functions": [
+        {
+          "name": "set_seed",
+          "params": [
+            "seed"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "get_dataloaders",
+          "params": [],
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "get_models",
+          "params": [],
+          "exported": true,
+          "lineCount": 28
+        },
+        {
+          "name": "train_model",
+          "params": [
+            "model",
+            "train_loader",
+            "epochs"
+          ],
+          "exported": true,
+          "lineCount": 35
+        },
+        {
+          "name": "evaluate_model",
+          "params": [
+            "model",
+            "test_loader"
+          ],
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "get_embeddings",
+          "params": [
+            "model",
+            "loader",
+            "model_name"
+          ],
+          "exported": true,
+          "lineCount": 60
+        }
+      ],
+      "classes": [
+        {
+          "name": "SimpleCNN",
+          "methods": [
+            "__init__",
+            "forward",
+            "get_embedding"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 33
+        }
+      ],
+      "imports": [
+        {
+          "source": "torch",
+          "specifiers": [
+            "torch"
+          ]
+        },
+        {
+          "source": "torch.nn",
+          "specifiers": [
+            "nn"
+          ]
+        },
+        {
+          "source": "torch.optim",
+          "specifiers": [
+            "optim"
+          ]
+        },
+        {
+          "source": "torchvision",
+          "specifiers": [
+            "datasets",
+            "transforms",
+            "models"
+          ]
+        },
+        {
+          "source": "torch.utils.data",
+          "specifiers": [
+            "DataLoader"
+          ]
+        },
+        {
+          "source": "sklearn.metrics",
+          "specifiers": [
+            "accuracy_score",
+            "precision_recall_fscore_support"
+          ]
+        },
+        {
+          "source": "tqdm",
+          "specifiers": [
+            "tqdm"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "random",
+          "specifiers": [
+            "random"
+          ]
+        }
+      ],
+      "exports": [
+        "set_seed",
+        "get_dataloaders",
+        "SimpleCNN",
+        "get_models",
+        "train_model",
+        "evaluate_model",
+        "get_embeddings"
+      ],
+      "totalLines": 293,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

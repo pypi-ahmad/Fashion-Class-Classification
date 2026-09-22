@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 19,
+  "totalBatches": 2,
+  "exportsByPath": {
+    ".gitattributes": [],
+    ".ua/.understandignore": [],
+    "app.py": [
+      "SimpleCNN",
+      "load_data",
+      "load_bundle",
+      "get_model_architecture",
+      "load_active_models",
+      "preprocess_image",
+      "get_gradcam"
+    ],
+    "data/FashionMNIST/raw/t10k-images-idx3-ubyte": [],
+    "data/FashionMNIST/raw/t10k-labels-idx1-ubyte": [],
+    "data/FashionMNIST/raw/train-images-idx3-ubyte": [],
+    "data/FashionMNIST/raw/train-labels-idx1-ubyte": [],
+    "fashion_bundle.pth": [],
+    "tests/conftest.py": [
+      "FakeStreamlit",
+      "DummyClassifierOutputTarget",
+      "DummyGradCAM",
+      "FakeFashionMNIST",
+      "TinyResNet",
+      "TinyEffNet",
+      "app_symbols"
+    ],
+    "tests/test_app_unit.py": [
+      "test_preprocess_image_returns_expected_tensor",
+      "test_preprocess_image_empty_input_raises",
+      "test_load_bundle_missing_file_returns_none",
+      "test_load_bundle_corrupted_file_raises",
+      "test_get_model_architecture_known_models",
+      "test_get_model_architecture_unknown_model_raises",
+      "test_load_active_models_loads_simplecnn",
+      "test_load_active_models_missing_model_key_raises",
+      "test_load_active_models_corrupted_state_dict_raises",
+      "test_get_gradcam_returns_map",
+      "test_get_gradcam_unknown_model_raises"
+    ],
+    "tests/test_integration.py": [
+      "test_training_pipeline_integration",
+      "test_inference_pipeline_integration",
+      "test_inference_pipeline_resnet18",
+      "test_inference_pipeline_efficientnet_b0",
+      "test_end_to_end_bundle_roundtrip"
+    ],
+    "tests/test_train_unit.py": [
+      "test_simplecnn_forward_and_embedding_shapes",
+      "test_get_dataloaders_returns_expected_shapes",
+      "test_train_model_updates_parameters",
+      "test_evaluate_model_returns_metrics",
+      "test_get_embeddings_simplecnn_shapes",
+      "test_get_embeddings_resnet_path_uses_hook",
+      "test_get_embeddings_unknown_model_name_raises",
+      "test_train_model_invalid_batch_schema_raises_value_error"
+    ],
+    "train.py": [
+      "set_seed",
+      "get_dataloaders",
+      "SimpleCNN",
+      "get_models",
+      "train_model",
+      "evaluate_model",
+      "get_embeddings"
+    ]
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "CHANGELOG.md",
+          "language": "markdown",
+          "sizeLines": 20,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "CODE_OF_CONDUCT.md",
+          "language": "markdown",
+          "sizeLines": 38,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 376,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "SECURITY.md",
+          "language": "markdown",
+          "sizeLines": 24,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "TEST_REPORT.md",
+          "language": "markdown",
+          "sizeLines": 99,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "requirements.txt",
+          "language": "txt",
+          "sizeLines": 11,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "CHANGELOG.md": [],
+        "CODE_OF_CONDUCT.md": [],
+        "README.md": [],
+        "SECURITY.md": [],
+        "TEST_REPORT.md": [],
+        "requirements.txt": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": ".gitattributes",
+          "language": "unknown",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": ".ua/.understandignore",
+          "language": "unknown",
+          "sizeLines": 70,
+          "fileCategory": "code"
+        },
+        {
+          "path": "app.py",
+          "language": "python",
+          "sizeLines": 415,
+          "fileCategory": "code"
+        },
+        {
+          "path": "data/FashionMNIST/raw/t10k-images-idx3-ubyte",
+          "language": "unknown",
+          "sizeLines": 7459,
+          "fileCategory": "code"
+        },
+        {
+          "path": "data/FashionMNIST/raw/t10k-labels-idx1-ubyte",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "data/FashionMNIST/raw/train-images-idx3-ubyte",
+          "language": "unknown",
+          "sizeLines": 46274,
+          "fileCategory": "code"
+        },
+        {
+          "path": "data/FashionMNIST/raw/train-labels-idx1-ubyte",
+          "language": "unknown",
+          "sizeLines": 0,
+          "fileCategory": "code"
+        },
+        {
+          "path": "fashion_bundle.pth",
+          "language": "pth",
+          "sizeLines": 420664,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/conftest.py",
+          "language": "python",
+          "sizeLines": 139,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_app_unit.py",
+          "language": "python",
+          "sizeLines": 103,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_integration.py",
+          "language": "python",
+          "sizeLines": 124,
+          "fileCategory": "code"
+        },
+        {
+          "path": "tests/test_train_unit.py",
+          "language": "python",
+          "sizeLines": 113,
+          "fileCategory": "code"
+        },
+        {
+          "path": "train.py",
+          "language": "python",
+          "sizeLines": 292,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".gitattributes": [],
+        ".ua/.understandignore": [],
+        "app.py": [],
+        "data/FashionMNIST/raw/t10k-images-idx3-ubyte": [],
+        "data/FashionMNIST/raw/t10k-labels-idx1-ubyte": [],
+        "data/FashionMNIST/raw/train-images-idx3-ubyte": [],
+        "data/FashionMNIST/raw/train-labels-idx1-ubyte": [],
+        "fashion_bundle.pth": [],
+        "tests/conftest.py": [],
+        "tests/test_app_unit.py": [],
+        "tests/test_integration.py": [],
+        "tests/test_train_unit.py": [],
+        "train.py": []
+      },
+      "neighborMap": {}
+    }
+  ]
+}
